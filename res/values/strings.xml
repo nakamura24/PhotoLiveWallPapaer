@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">デジカメライブ壁紙</string>
-    <string name="description">デジカメのフォルダに入っている写真のライブ壁紙</string>
+    <string name="app_name">カメラ写真ライブ壁紙</string>
+    <string name="description">カメラで撮った写真がフリックやダブルタップで切り替わります</string>
     
 </resources>

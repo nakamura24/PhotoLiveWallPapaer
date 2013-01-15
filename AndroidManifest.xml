@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="jp.photolivewallpapaer"
+    package="jp.livewallpapaer.photo"
     android:versionCode="1"
-    android:versionName="1.0.0" android:installLocation="auto">
+    android:versionName="1.0.0" 
+    android:installLocation="auto">
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -25,6 +26,6 @@
                 android:name="android.service.wallpaper" 
                 android:resource="@xml/wallpaper" />
         </service>
-    </application>
+	</application>
 
 </manifest>

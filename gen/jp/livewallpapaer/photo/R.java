@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package jp.photolivewallpapaer;
+package jp.livewallpapaer.photo;
 
 public final class R {
     public static final class attr {
