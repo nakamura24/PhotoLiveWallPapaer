@@ -29,7 +29,7 @@ public class PhotoLiveWallPaper extends LiveWallPaper {
 	private void getImageList() {
 		Log.i(Tag, "getImageList");
 		try{
-			// SDカードのFileを取得  
+			// SDカードのFileを取得
 			File file = Environment.getExternalStorageDirectory();
 			mImageList.clear();
 			getImageSubDir(file.getAbsolutePath() + "/DCIM");
@@ -41,26 +41,26 @@ public class PhotoLiveWallPaper extends LiveWallPaper {
 	private void getImageSubDir(String subdir) {
 		Log.i(Tag, "getImageSubDir - " + subdir);
 		try {
-			File subDir = new File(subdir);  
-            String subFileName[] = subDir.list();  
-            int n = 0;  
-            while(subFileName.length > n){  
-                File subFile = new File(subDir + "/" + subFileName[n]);  
-                if(subFile.isDirectory()){  
-                	getImageSubDir(subDir + "/" + subFileName[n]);
-                }else if(subFile.getName().endsWith("jpg") || subFile.getName().endsWith("JPG")){  
-            		if(!subDir.getAbsolutePath().contains("/.")) {
-                		Log.d(Tag, subDir.getPath() + "/" + subFileName[n]);
-            			mImageList.add(subDir.getPath() + "/" + subFileName[n]);
-            		}
-                }  
-                n++;  
-            }  
+			File subDir = new File(subdir);
+			String subFileName[] = subDir.list();
+			int n = 0;
+			while(subFileName.length > n){
+				File subFile = new File(subDir + "/" + subFileName[n]);
+				if(subFile.isDirectory()){
+					getImageSubDir(subDir + "/" + subFileName[n]);
+				}else if(subFile.getName().endsWith("jpg") || subFile.getName().endsWith("JPG")){
+					if(!subDir.getAbsolutePath().contains("/.")) {
+						Log.d(Tag, subDir.getPath() + "/" + subFileName[n]);
+						mImageList.add(subDir.getPath() + "/" + subFileName[n]);
+					}
+				}
+				n++;
+			}
 		} catch (Exception e) {
 			Log.e(Tag, e.getMessage());
 		}
 	}
-	
+
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
@@ -70,8 +70,8 @@ public class PhotoLiveWallPaper extends LiveWallPaper {
 	public Engine onCreateEngine() {
 		return new LiveEngine();
 	}
-	
-	// 表示状態変更時に呼び出される 
+
+	// 表示状態変更時に呼び出される
 	@Override
 	public void VisibilityChanged(boolean visible){
 		if(visible){
@@ -79,37 +79,37 @@ public class PhotoLiveWallPaper extends LiveWallPaper {
 			Collections.sort(mImageList);
 		}
 	}
-	
+
 	// オフセット変更時に呼び出される
 	@Override
 	public boolean OffsetsChanged(float xOffset, float yOffset, float xStep, float yStep, int xPixels, int yPixels){
 		return false;
 	}
 
-	// キャンバスに描画を行う 
+	// キャンバスに描画を行う
 	@Override
 	public void DrawCanvas(Canvas canvas) {
 		// 背景色を設定
 		canvas.drawColor(BackgroundColor);
 		if(Image.getWidth() < Image.getHeight()) {
 			// 画像のリサイズ
-		    float scale_x = (float)Image.getWidth() / (float)WidthPixels;
-		    float scale_y = (float)Image.getHeight() / (float)HeightPixels;
-		    float scale = Math.max(scale_x, scale_y);
-	        int new_x = (int)(Image.getWidth() / scale);
-	        int new_y = (int)(Image.getHeight() / scale);
-	        Image = Bitmap.createScaledBitmap(Image, new_x, new_y, false);
+			float scale_x = (float)Image.getWidth() / (float)WidthPixels;
+			float scale_y = (float)Image.getHeight() / (float)HeightPixels;
+			float scale = Math.max(scale_x, scale_y);
+			int new_x = (int)(Image.getWidth() / scale);
+			int new_y = (int)(Image.getHeight() / scale);
+			Image = Bitmap.createScaledBitmap(Image, new_x, new_y, false);
 		} else {
 			// 画像のリサイズ
-		    float scale_x = (float)Image.getWidth() / (float)HeightPixels;
-		    float scale_y = (float)Image.getHeight() / (float)WidthPixels;
-		    float scale = Math.max(scale_x, scale_y);
-	        int new_x = (int)(Image.getWidth() / scale);
-	        int new_y = (int)(Image.getHeight() / scale);
-	        Image = Bitmap.createScaledBitmap(Image, new_x, new_y, false);
-	        Matrix matrix = new Matrix();
-	        matrix.postRotate(90);
-	        Image = Bitmap.createBitmap(Image, 0, 0, new_x, new_y, matrix, true);
+			float scale_x = (float)Image.getWidth() / (float)HeightPixels;
+			float scale_y = (float)Image.getHeight() / (float)WidthPixels;
+			float scale = Math.max(scale_x, scale_y);
+			int new_x = (int)(Image.getWidth() / scale);
+			int new_y = (int)(Image.getHeight() / scale);
+			Image = Bitmap.createScaledBitmap(Image, new_x, new_y, false);
+			Matrix matrix = new Matrix();
+			matrix.postRotate(90);
+			Image = Bitmap.createBitmap(Image, 0, 0, new_x, new_y, matrix, true);
 		}
 		// キャンバスに画像を描画
 		canvas.drawBitmap(Image, 0, 0, null);
@@ -129,7 +129,7 @@ public class PhotoLiveWallPaper extends LiveWallPaper {
 		// スーパークラスの処理は、何もしない
 		super.DrawDelay();
 	}
-	
+
 	// ダブルタップした時の処理
 	@Override
 	public boolean DoubleTap(MotionEvent event) {
