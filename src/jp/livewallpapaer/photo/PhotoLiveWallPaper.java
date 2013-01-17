@@ -18,12 +18,14 @@ public class PhotoLiveWallPaper extends LiveWallPaper {
 	private ArrayList<String> mImageList = new ArrayList<String>();
 	private int mOffset = 0;
 
+	public PhotoLiveWallPaper() {
+		getImageList();
+		Collections.sort(mImageList);
+	}
+	
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		Image = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
-		getImageList();
-		Collections.sort(mImageList);
 	}
 
 	private void getImageList() {
