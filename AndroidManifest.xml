@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="jp.livewallpapaer.photo"
-    android:versionCode="3"
-    android:versionName="1.0.2" >
+    android:versionCode="1"
+    android:versionName="1.0.3" >
 
     <uses-sdk
         android:minSdkVersion="7"
@@ -25,6 +25,11 @@
                 android:name="android.service.wallpaper" 
                 android:resource="@xml/wallpaper" />
         </service>
+        <activity 
+            android:name=".LiveWallPaperPreference" 
+            android:theme="@android:style/Theme.WallpaperSettings" 
+            android:exported="true">
+        </activity>
 	</application>
 
 </manifest>

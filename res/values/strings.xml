@@ -3,5 +3,6 @@
 
     <string name="app_name">カメラ写真ライブ壁紙</string>
     <string name="description">カメラで撮った写真がフリックやダブルタップで切り替わります</string>
+    <string name="path">画像フォルダ</string>
     
 </resources>
