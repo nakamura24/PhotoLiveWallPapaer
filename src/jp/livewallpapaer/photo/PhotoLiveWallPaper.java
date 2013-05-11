@@ -100,29 +100,29 @@ public class PhotoLiveWallPaper extends LiveWallPaper {
 	public void DrawCanvas(Canvas canvas) {
 		// 背景色を設定
 		canvas.drawColor(BackgroundColor);
-		if (Image.getWidth() < Image.getHeight()) {
+		if (BitmapImage.getWidth() < BitmapImage.getHeight()) {
 			// 画像のリサイズ
-			float scale_x = (float) Image.getWidth() / (float) WidthPixels;
-			float scale_y = (float) Image.getHeight() / (float) HeightPixels;
+			float scale_x = (float) BitmapImage.getWidth() / (float) WidthPixels;
+			float scale_y = (float) BitmapImage.getHeight() / (float) HeightPixels;
 			float scale = Math.max(scale_x, scale_y);
-			int new_x = (int) (Image.getWidth() / scale);
-			int new_y = (int) (Image.getHeight() / scale);
-			Image = Bitmap.createScaledBitmap(Image, new_x, new_y, false);
+			int new_x = (int) (BitmapImage.getWidth() / scale);
+			int new_y = (int) (BitmapImage.getHeight() / scale);
+			BitmapImage = Bitmap.createScaledBitmap(BitmapImage, new_x, new_y, false);
 		} else {
 			// 画像のリサイズ
-			float scale_x = (float) Image.getWidth() / (float) HeightPixels;
-			float scale_y = (float) Image.getHeight() / (float) WidthPixels;
+			float scale_x = (float) BitmapImage.getWidth() / (float) HeightPixels;
+			float scale_y = (float) BitmapImage.getHeight() / (float) WidthPixels;
 			float scale = Math.max(scale_x, scale_y);
-			int new_x = (int) (Image.getWidth() / scale);
-			int new_y = (int) (Image.getHeight() / scale);
-			Image = Bitmap.createScaledBitmap(Image, new_x, new_y, false);
+			int new_x = (int) (BitmapImage.getWidth() / scale);
+			int new_y = (int) (BitmapImage.getHeight() / scale);
+			BitmapImage = Bitmap.createScaledBitmap(BitmapImage, new_x, new_y, false);
 			Matrix matrix = new Matrix();
 			matrix.postRotate(90);
-			Image = Bitmap
-					.createBitmap(Image, 0, 0, new_x, new_y, matrix, true);
+			BitmapImage = Bitmap
+					.createBitmap(BitmapImage, 0, 0, new_x, new_y, matrix, true);
 		}
 		// キャンバスに画像を描画
-		canvas.drawBitmap(Image, 0, 0, null);
+		canvas.drawBitmap(BitmapImage, 0, 0, null);
 	}
 
 	// 描画する画像を変更
@@ -130,7 +130,7 @@ public class PhotoLiveWallPaper extends LiveWallPaper {
 	public void ChangeImage() {
 		// スーパークラスの処理は、ダブルタップした回数に合わせて画像を変更する
 		// super.ChangeImage();
-		Image = BitmapFactory.decodeFile(mImageList.get(mOffset));
+		BitmapImage = BitmapFactory.decodeFile(mImageList.get(mOffset));
 	}
 
 	// 再度描画が行われる前に呼び出される
